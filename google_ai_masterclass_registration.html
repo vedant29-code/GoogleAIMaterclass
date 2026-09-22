@@ -1,0 +1,1994 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google AI Masterclass | Partnered with School of the Future, Techno India University</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter, Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            google: {
+              blue: '#1a73e8',
+              'blue-dark': '#1557b0',
+              red: '#ea4335',
+              yellow: '#fbbc04',
+              green: '#34a853',
+              gray: '#5f6368',
+              surface: '#f8fafd'
+            },
+            gemini: {
+              start: '#1a73e8',
+              mid: '#8ab4f8',
+              purple: '#9334ea',
+              magenta: '#e879f9',
+              pink: '#f43f5e'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Gemini Iridescent Gradient & Glow Effects */
+    .gemini-gradient-text {
+      background: linear-gradient(135deg, #1a73e8 0%, #7c3aed 50%, #e11d48 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .gemini-gradient-bg {
+      background: linear-gradient(135deg, #1a73e8 0%, #9333ea 52%, #f43f5e 100%);
+    }
+
+    .gemini-gradient-border {
+      position: relative;
+      background: #ffffff;
+      border-radius: 1.5rem;
+    }
+    .gemini-gradient-border::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      border-radius: inherit;
+      padding: 2px;
+      background: linear-gradient(135deg, #1a73e8 0%, #c084fc 50%, #f43f5e 100%);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+
+    .gemini-halo {
+      background: radial-gradient(circle at 50% 50%, rgba(147, 51, 234, 0.12) 0%, rgba(26, 115, 232, 0.08) 40%, rgba(244, 63, 94, 0.03) 70%, transparent 80%);
+      filter: blur(55px);
+    }
+
+    /* Floating pill shine */
+    .pill-glow {
+      box-shadow: 0 4px 20px -2px rgba(124, 58, 237, 0.15);
+    }
+
+    /* Form input focus styling */
+    .form-input-focus {
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .form-input-focus:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.2);
+      border-color: #1a73e8;
+    }
+
+    /* Typing cursor blinking */
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+    .cursor-blink {
+      display: inline-block;
+      width: 3px;
+      height: 1.05em;
+      margin-left: 4px;
+      vertical-align: -0.15em;
+      background: #7c3aed;
+      animation: blink 0.9s infinite;
+    }
+
+    /* Google Wallet Pass Realistic Card */
+    .wallet-card-shadow {
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1);
+    }
+
+    /* Chat widget scrollbar */
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 5px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="bg-[#fcfdfe] text-gray-900 font-sans antialiased overflow-x-hidden selection:bg-purple-100 selection:text-purple-900">
+
+  <!-- Ambient background glow elements -->
+  <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[900px] h-[520px] gemini-halo -z-10 pointer-events-none opacity-85"></div>
+  <div class="fixed bottom-0 right-0 w-[550px] h-[550px] bg-blue-100/30 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+
+  <nav class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+      
+      <!-- Left Brand Lockup -->
+      <div class="flex items-center gap-3 sm:gap-4 shrink-0">
+        <!-- Google AI Logo (Crisp Vector + Google Typography) -->
+        <a href="#" class="flex items-center gap-2.5 group select-none shrink-0" title="Google AI">
+          <svg class="w-6 sm:w-7 h-6 sm:h-7 shrink-0 drop-shadow-xs" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/>
+            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/>
+          </svg>
+          <div class="flex items-baseline font-display text-lg sm:text-[21px] leading-none">
+            <span class="text-gray-900 font-bold tracking-tight">Google</span>
+            <span class="ml-1 text-purple-600 font-extrabold tracking-tight">AI</span>
+          </div>
+        </a>
+
+        <!-- Divider -->
+        <span class="h-6 w-px bg-gray-200"></span>
+
+        <!-- School of the Future / Techno India University Logo Lockup -->
+        <div class="flex items-center">
+          <svg class="h-8 sm:h-9 w-auto max-w-[210px] sm:max-w-[240px]" viewBox="0 0 960 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <text x="15" y="86" font-family="'Plus Jakarta Sans', 'Inter', sans-serif" font-size="52" font-weight="500" fill="#000000" letter-spacing="-0.5">School of the</text>
+            <text x="12" y="178" font-family="'Plus Jakarta Sans', 'Inter', sans-serif" font-size="104" font-weight="900" letter-spacing="-1.5" fill="#000000">FUTURE</text>
+            <g transform="translate(485, 126)">
+              <circle cx="0" cy="0" r="66" fill="#ED1C24"/>
+              <g fill="#ffffff">
+                <path d="M-10 -46 L-4 -46 L-8 -26 L-14 -26 Z"/>
+                <path d="M-15 -21 L16 -21 L12 -12 L-4 -12 L-4 15 C-4 22 -1 25 5 25 C10 25 14 23 17 20 L21 28 C16 32 9 34 2 34 C-10 34 -15 27 -15 15 L-15 -12 L-23 -12 L-19 -21 Z"/>
+                <path d="M3 -38 L14 -38 L10 -25 L-1 -25 Z"/>
+                <path d="M12 -8 L24 -8 L13 25 L3 25 Z"/>
+              </g>
+              <path id="curve-bot-nav" d="M -77,42 A 88,88 0 0,0 78,35" fill="none"/>
+              <text font-family="'Plus Jakarta Sans', 'Inter', sans-serif" font-size="14.5" font-weight="800" fill="#000000" letter-spacing="2.8">
+                <textPath href="#curve-bot-nav" startOffset="50%" text-anchor="middle">TECHNO INDIA™ GROUP</textPath>
+              </text>
+            </g>
+            <text x="600" y="86" font-family="'Plus Jakarta Sans', 'Inter', sans-serif" font-size="58" font-weight="900" fill="#000000" letter-spacing="-1.5">techno india</text>
+            <text x="600" y="146" font-family="'Plus Jakarta Sans', 'Inter', sans-serif" font-size="62" font-weight="900" fill="#000000" letter-spacing="-1.5">university</text>
+            <line x1="600" y1="168" x2="805" y2="168" stroke="#000000" stroke-width="2.8"/>
+            <text x="602" y="208" font-family="'Plus Jakarta Sans', 'Inter', sans-serif" font-size="28" font-weight="600" letter-spacing="4.5" fill="#000000">WEST BENGAL</text>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Right CTAs -->
+      <div class="flex items-center gap-3">
+        <!-- Live Seat status chip -->
+        <div class="hidden md:flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-xs text-blue-700 font-semibold shadow-xs">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-600"></span>
+          </span>
+          <span id="navSeatStatus">Seats 42% Filled</span>
+        </div>
+
+        <a href="#register" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold text-white gemini-gradient-bg hover:opacity-95 shadow-md shadow-purple-500/20 transition-all hover:scale-[1.02] active:scale-[0.98]">
+          <span>Register Now</span>
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="relative pt-12 pb-16 lg:pt-16 lg:pb-22 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Academic Partnership Pill -->
+      <div class="inline-flex items-center gap-2 sm:gap-3 px-3.5 sm:px-4 py-2 rounded-2xl bg-white/95 backdrop-blur-md border border-purple-100 shadow-sm text-xs sm:text-sm text-gray-700 mb-8 pill-glow flex-wrap">
+        <div class="flex -space-x-1 shrink-0">
+          <span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-red-500"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-yellow-400"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-green-500"></span>
+        </div>
+        <span class="font-medium text-gray-700">Google AI &times; School of the Future Partnership</span>
+        
+        <span class="hidden sm:inline-block w-1 h-1 rounded-full bg-gray-300"></span>
+        <span class="hidden sm:inline-flex items-center gap-1 text-[11px] font-semibold text-purple-700 bg-purple-50/80 px-2 py-0.5 rounded-md border border-purple-100">
+          Flagship Edition
+        </span>
+
+        <div class="inline-flex items-center bg-gray-50/90 px-2.5 py-1 rounded-lg border border-gray-100">
+          <svg class="h-5 sm:h-6 w-auto max-w-[190px] sm:max-w-[210px]" viewBox="0 0 520 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <text x="5" y="44" font-family="'Plus Jakarta Sans', 'Inter', sans-serif" font-size="34" font-weight="500" fill="#111827">School of the</text>
+            <text x="3" y="105" font-family="'Plus Jakarta Sans', 'Inter', sans-serif" font-size="64" font-weight="900" letter-spacing="-1" fill="#030712">FUTURE</text>
+            <g transform="translate(260, 68)">
+              <circle cx="0" cy="0" r="48" fill="#e5261f"/>
+              <path d="M-11 -28 H-3 L-3 -14 H9 V-6 H-3 V18 C-3 23 -1 25 3 25 C6 25 9 24 11 22 L11 29 C8 31 4 32 0 32 C-7 32 -11 28 -11 20 V-6 H-17 V-14 H-11 Z" fill="#ffffff"/>
+              <path id="curve-hero" d="M -36,12 A 38,38 0 0,0 2,42" fill="none"/>
+              <text font-family="'Inter', sans-serif" font-size="7.5" font-weight="800" fill="#ffffff" letter-spacing="1.5">
+                <textPath href="#curve-hero">TECHNO INDIA™</textPath>
+              </text>
+            </g>
+            <text x="325" y="45" font-family="'Plus Jakarta Sans', 'Inter', sans-serif" font-size="36" font-weight="800" fill="#030712">techno india</text>
+            <text x="325" y="85" font-family="'Plus Jakarta Sans', 'Inter', sans-serif" font-size="38" font-weight="800" fill="#030712">university</text>
+            <line x1="325" y1="98" x2="495" y2="98" stroke="#111827" stroke-width="1.8"/>
+            <text x="325" y="122" font-family="'Plus Jakarta Sans', 'Inter', sans-serif" font-size="19" font-weight="600" letter-spacing="3" fill="#1f2937">WEST BENGAL</text>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Hero Headline with dynamic Gemini-style character typing -->
+      <div class="max-w-4xl">
+        <div class="inline-flex items-center gap-2 mb-3">
+          <span class="w-2 h-2 rounded-full bg-purple-600 animate-ping"></span>
+          <span class="text-xs font-bold tracking-widest uppercase text-purple-700">Official Flagship Edition 2026</span>
+        </div>
+
+        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-display font-extrabold tracking-tight text-gray-950 leading-[1.08] mb-6 min-h-[140px] sm:min-h-[160px] lg:min-h-[180px]">
+          <span id="heroTypingText">Architecting Tomorrow with</span>
+          <br>
+          <span id="heroHighlightText" class="gemini-gradient-text">Gemini & Multimodal AI</span><span id="heroCursor" class="cursor-blink"></span>
+        </h1>
+        
+        <p class="text-lg sm:text-xl text-gray-600 font-normal leading-relaxed max-w-2xl mb-8">
+          A hands-on, immersive masterclass on building generative applications, multimodal reasoning systems, and autonomous agents using Google's frontier models.
+        </p>
+      </div>
+
+      <!-- Live Seat Gauge Component -->
+      <div class="max-w-4xl mb-10">
+        <div class="p-5 sm:p-6 rounded-3xl bg-white/95 border border-purple-100 shadow-xl shadow-purple-900/5 backdrop-blur-xl">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3">
+            <div class="flex items-center gap-3">
+              <span class="relative flex h-3 w-3">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+              </span>
+              <div>
+                <span class="text-xs font-bold uppercase tracking-wider text-emerald-600">Live Seat Availability</span>
+                <h4 class="text-sm font-semibold text-gray-900">Techno India University Main Auditorium</h4>
+              </div>
+            </div>
+            
+            <div class="flex items-baseline gap-2">
+              <span id="seatsRegisteredText" class="text-2xl sm:text-3xl font-display font-extrabold text-gray-900">147</span>
+              <span class="text-sm text-gray-400 font-medium">/ 350 Seats Claimed</span>
+              <span id="seatsPercentBadge" class="ml-2 px-2.5 py-1 rounded-full text-xs font-bold bg-blue-50 text-blue-700 border border-blue-100">42% Full</span>
+            </div>
+          </div>
+
+          <div class="w-full h-3 bg-gray-100 rounded-full overflow-hidden p-0.5 relative">
+            <div 
+              id="seatsProgressBar" 
+              class="h-full rounded-full gemini-gradient-bg transition-all duration-700 ease-out shadow-sm"
+              style="width: 42%;"
+            ></div>
+          </div>
+
+          <div class="flex items-center justify-between text-xs text-gray-500 mt-2.5">
+            <span class="flex items-center gap-1.5 font-medium text-emerald-700">
+              <svg class="w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+              <span id="seatsLeftCount" class="font-bold text-gray-900">203 seats</span> remaining
+            </span>
+            <span class="text-gray-400">Verified student access quota</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Event Quick Meta Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-4 sm:p-5 rounded-3xl bg-white/90 border border-gray-200/80 shadow-xl shadow-purple-900/5 backdrop-blur-lg max-w-5xl">
+        <div class="flex items-center gap-3.5 p-3 rounded-2xl bg-blue-50/60 border border-blue-100/50">
+          <div class="w-11 h-11 rounded-xl bg-blue-600 flex items-center justify-center text-white shrink-0 shadow-sm">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+          </div>
+          <div>
+            <div class="text-[11px] font-semibold text-blue-600 uppercase tracking-wider">Date</div>
+            <div class="text-sm font-bold text-gray-900">Saturday, Oct 17, 2026</div>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3.5 p-3 rounded-2xl bg-purple-50/60 border border-purple-100/50">
+          <div class="w-11 h-11 rounded-xl bg-purple-600 flex items-center justify-center text-white shrink-0 shadow-sm">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          </div>
+          <div>
+            <div class="text-[11px] font-semibold text-purple-600 uppercase tracking-wider">Schedule</div>
+            <div class="text-sm font-bold text-gray-900">10:00 AM – 4:30 PM IST</div>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3.5 p-3 rounded-2xl bg-pink-50/60 border border-pink-100/50">
+          <div class="w-11 h-11 rounded-xl bg-rose-600 flex items-center justify-center text-white shrink-0 shadow-sm">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+          </div>
+          <div class="min-w-0">
+            <div class="text-[11px] font-semibold text-rose-600 uppercase tracking-wider">Venue</div>
+            <div class="text-sm font-bold text-gray-900 truncate">Audi-1, School of the Future</div>
+            <div class="text-xs text-gray-500 truncate">Techno India Univ, Salt Lake</div>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3.5 p-3 rounded-2xl bg-amber-50/60 border border-amber-100/50">
+          <div class="w-11 h-11 rounded-xl bg-amber-600 flex items-center justify-center text-white shrink-0 shadow-sm">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+          </div>
+          <div>
+            <div class="text-[11px] font-semibold text-amber-700 uppercase tracking-wider">Tier Options</div>
+            <div class="text-sm font-bold text-gray-900">Free & VIP Passes</div>
+            <div class="text-xs text-gray-500">Networking & Lunch Add-on</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <section class="py-12 bg-white border-y border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="px-3.5 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-semibold tracking-wide uppercase">Curriculum & Experience</span>
+        <h2 class="text-3xl font-display font-bold text-gray-900 mt-3">What You Will Master</h2>
+        <p class="text-gray-600 text-sm sm:text-base mt-2">Designed for university students and engineers ready to deploy Google's foundation models in production.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="p-6 rounded-3xl bg-slate-50/70 border border-gray-100 hover:border-blue-200 transition-all hover:shadow-lg hover:-translate-y-1">
+          <div class="w-12 h-12 rounded-2xl bg-blue-600/10 text-blue-600 flex items-center justify-center font-bold text-xl mb-4">
+            ✦
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-2">Multimodal Prompt Engineering</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">
+            Harness Google Gemini's native visual, audio, and code context windows. Master structured JSON outputs and function calling.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-3xl bg-slate-50/70 border border-gray-100 hover:border-purple-200 transition-all hover:shadow-lg hover:-translate-y-1">
+          <div class="w-12 h-12 rounded-2xl bg-purple-600/10 text-purple-600 flex items-center justify-center font-bold text-xl mb-4">
+            ⚡
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-2">Building Autonomous Agents</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">
+            Construct goal-driven agent architectures utilizing Google Vertex AI, RAG over institutional documents, and tool-augmented workflows.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-3xl bg-slate-50/70 border border-gray-100 hover:border-pink-200 transition-all hover:shadow-lg hover:-translate-y-1">
+          <div class="w-12 h-12 rounded-2xl bg-pink-600/10 text-pink-600 flex items-center justify-center font-bold text-xl mb-4">
+            🎓
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-2">Verified Google Credential</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">
+            Complete the afternoon challenge sprint and earn an official digital credential co-signed by Google and School of the Future, TIU.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main id="register" class="py-16 sm:py-24 relative">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Title -->
+      <div class="text-center mb-8">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-50 text-purple-700 text-xs font-semibold uppercase tracking-wider">
+          Auditorium Registration Portal
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-display font-bold text-gray-950 mt-3">Reserve Your Masterclass Seat</h2>
+        <p class="text-gray-600 text-sm sm:text-base mt-2">
+          Open to students of Techno India University and registered colleges. Follow the steps below to claim your ticket.
+        </p>
+      </div>
+
+      <!-- Main Form Wrapper Card -->
+      <div class="gemini-gradient-border shadow-2xl p-6 sm:p-10 relative bg-white">
+        
+        <!-- STEPPER PROGRESS BAR (Visible while filling form) -->
+        <div id="formStepper" class="mb-8 border-b border-gray-100 pb-6">
+          <div class="flex items-center justify-between max-w-xl mx-auto relative">
+            <div class="absolute left-6 right-6 top-1/2 -translate-y-1/2 h-1 bg-gray-200 -z-0">
+              <div id="stepperFill" class="h-full gemini-gradient-bg transition-all duration-300 w-[0%]"></div>
+            </div>
+
+            <!-- Step 1 Button -->
+            <button type="button" class="stepper-indicator relative z-10 flex flex-col items-center group" data-step="1">
+              <div id="stepDot1" class="w-9 h-9 rounded-full bg-purple-600 text-white font-bold text-xs flex items-center justify-center shadow-md transition-all">
+                1
+              </div>
+              <span class="text-[11px] font-semibold text-purple-700 mt-1.5 hidden sm:block">Pass Type</span>
+            </button>
+
+            <!-- Step 2 Button -->
+            <button type="button" class="stepper-indicator relative z-10 flex flex-col items-center group" data-step="2">
+              <div id="stepDot2" class="w-9 h-9 rounded-full bg-gray-200 text-gray-600 font-bold text-xs flex items-center justify-center transition-all">
+                2
+              </div>
+              <span class="text-[11px] font-medium text-gray-500 mt-1.5 hidden sm:block">Personal Info</span>
+            </button>
+
+            <!-- Step 3 Button -->
+            <button type="button" class="stepper-indicator relative z-10 flex flex-col items-center group" data-step="3">
+              <div id="stepDot3" class="w-9 h-9 rounded-full bg-gray-200 text-gray-600 font-bold text-xs flex items-center justify-center transition-all">
+                3
+              </div>
+              <span class="text-[11px] font-medium text-gray-500 mt-1.5 hidden sm:block">Academic</span>
+            </button>
+
+            <!-- Step 4 Button -->
+            <button type="button" class="stepper-indicator relative z-10 flex flex-col items-center group" data-step="4">
+              <div id="stepDot4" class="w-9 h-9 rounded-full bg-gray-200 text-gray-600 font-bold text-xs flex items-center justify-center transition-all">
+                4
+              </div>
+              <span class="text-[11px] font-medium text-gray-500 mt-1.5 hidden sm:block">Confirm</span>
+            </button>
+          </div>
+        </div>
+
+        <div id="rsvpSuccessCard" class="hidden animate-in fade-in zoom-in-95 duration-500 space-y-8">
+          
+          <!-- Top celebratory banner -->
+          <div class="text-center pb-6 border-b border-gray-100">
+            <div class="w-16 h-16 rounded-3xl gemini-gradient-bg flex items-center justify-center mx-auto mb-4 shadow-lg shadow-purple-500/20 text-white text-2xl">
+              ✓
+            </div>
+            <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-bold tracking-wide uppercase mb-2">
+              <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+              RSVP Confirmed & Verified
+            </div>
+            <h3 class="text-2xl sm:text-3xl font-display font-extrabold text-gray-950">Registration Complete!</h3>
+            <p class="text-sm text-gray-600 max-w-md mx-auto mt-1">
+              Your seat is confirmed in Audi-1. Your personalized Google Wallet pass and email invitation are ready below.
+            </p>
+          </div>
+
+          <!-- Section A: Official Google Wallet Pass representation (With Canvas Image Export) -->
+          <div class="max-w-md mx-auto">
+            <div class="flex items-center justify-between mb-2">
+              <div class="flex items-center gap-1.5 text-xs font-bold text-gray-800">
+                <svg class="w-4 h-4 text-purple-600" viewBox="0 0 24 24" fill="currentColor"><path d="M21 18v1c0 1.1-.9 2-2 2H5c-1.11 0-2-.9-2-2V5c0-1.1.89-2 2-2h14c1.1 0 2 .9 2 2v1h-9c-1.11 0-2 .9-2 2v8c0 1.1.89 2 2 2h9zm-9-2h10V8H12v8zm4-2.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+                <span>Google Wallet Digital Pass</span>
+              </div>
+              <span class="text-[10px] uppercase font-mono text-gray-400">NFC Active</span>
+            </div>
+
+            <!-- Google Wallet styled Card Container -->
+            <div id="walletPassElement" class="rounded-3xl p-6 bg-gradient-to-br from-gray-950 via-[#131722] to-[#1f2438] text-white wallet-card-shadow relative overflow-hidden border border-white/10">
+              <div class="absolute -right-10 -bottom-10 w-44 h-44 rounded-full bg-purple-600/20 blur-2xl pointer-events-none"></div>
+              
+              <!-- Pass Top Bar -->
+              <div class="flex items-center justify-between pb-4 border-b border-white/10">
+                <div class="flex items-center gap-2">
+                  <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none">
+                    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                    <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/>
+                    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/>
+                  </svg>
+                  <span class="font-bold text-sm tracking-tight">Google AI Masterclass</span>
+                </div>
+                <span id="walletPassTier" class="text-[10px] font-extrabold uppercase px-2.5 py-0.5 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30">STANDARD PASS</span>
+              </div>
+
+              <!-- Pass Body Details -->
+              <div class="py-5 space-y-4">
+                <div>
+                  <span class="text-[10px] font-mono tracking-wider text-gray-400 uppercase">Attendee</span>
+                  <h4 id="walletAttendeeName" class="text-xl font-display font-extrabold tracking-tight text-white mt-0.5">Sagnik Banerjee</h4>
+                  <p id="walletStudentId" class="text-xs text-gray-400 font-mono">TIU/SOF/2023/0482</p>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3 text-xs">
+                  <div>
+                    <span class="text-[9px] font-mono text-gray-400 uppercase block">Host Institution</span>
+                    <span class="font-semibold text-gray-200">School of the Future</span>
+                    <span class="text-[10px] text-gray-400 block">Techno India Univ</span>
+                  </div>
+                  <div>
+                    <span class="text-[9px] font-mono text-gray-400 uppercase block">Venue & Time</span>
+                    <span class="font-semibold text-gray-200">Audi-1 &bull; 10:00 AM</span>
+                    <span class="text-[10px] text-gray-400 block">Oct 17, 2026</span>
+                  </div>
+                </div>
+
+                <!-- VIP Token strip if paid -->
+                <div id="walletVipBanner" class="hidden p-2.5 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs flex items-center justify-between">
+                  <span class="flex items-center gap-1.5 font-bold text-[11px]">
+                    <span>🍽️</span> Executive Lunch & Networking Lounge Token
+                  </span>
+                  <span class="text-[10px] font-mono bg-amber-400/20 px-1.5 py-0.5 rounded text-amber-200">VERIFIED</span>
+                </div>
+
+                <!-- QR Code & Barcode Row -->
+                <div class="pt-3 border-t border-white/10 flex items-center justify-between gap-4">
+                  <div>
+                    <span class="text-[9px] font-mono text-gray-400 uppercase block">Ticket ID</span>
+                    <span id="walletTicketCode" class="font-mono text-sm font-bold text-purple-300">GAI-TIU-2026-8812</span>
+                    <span class="text-[10px] text-gray-400 block mt-0.5">Show QR at Audi gate</span>
+                  </div>
+                  
+                  <!-- Vector QR Code representation -->
+                  <div class="w-16 h-16 bg-white p-1 rounded-xl shrink-0 flex items-center justify-center shadow-md">
+                    <svg class="w-full h-full text-gray-900" viewBox="0 0 100 100" fill="currentColor">
+                      <rect width="100" height="100" fill="white"/>
+                      <rect x="8" y="8" width="28" height="28" rx="3" stroke="#111827" stroke-width="5" fill="none"/>
+                      <rect x="17" y="17" width="10" height="10"/>
+                      <rect x="64" y="8" width="28" height="28" rx="3" stroke="#111827" stroke-width="5" fill="none"/>
+                      <rect x="73" y="17" width="10" height="10"/>
+                      <rect x="8" y="64" width="28" height="28" rx="3" stroke="#111827" stroke-width="5" fill="none"/>
+                      <rect x="17" y="73" width="10" height="10"/>
+                      <rect x="45" y="15" width="8" height="8"/>
+                      <rect x="45" y="32" width="8" height="8"/>
+                      <rect x="45" y="48" width="8" height="8"/>
+                      <rect x="15" y="48" width="8" height="8"/>
+                      <rect x="30" y="48" width="8" height="8"/>
+                      <rect x="62" y="48" width="8" height="8"/>
+                      <rect x="78" y="48" width="8" height="8"/>
+                      <rect x="45" y="65" width="8" height="8"/>
+                      <rect x="62" y="65" width="8" height="8"/>
+                      <rect x="78" y="65" width="8" height="8"/>
+                      <rect x="62" y="80" width="8" height="8"/>
+                      <rect x="78" y="80" width="8" height="8"/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Action buttons for pass -->
+            <div class="mt-3 flex items-center gap-2">
+              <button 
+                type="button" 
+                id="downloadPassImageBtn"
+                class="flex-1 py-2.5 px-4 rounded-xl bg-gray-900 hover:bg-black text-white text-xs font-semibold flex items-center justify-center gap-2 transition shadow-sm"
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                <span>Download Pass as Image (.png)</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Section B: Gmail Style Instant Confirmation Email Preview Card -->
+          <div class="rounded-2xl border border-gray-200 bg-white overflow-hidden shadow-sm">
+            <!-- Gmail Header bar -->
+            <div class="bg-gray-50/80 px-4 py-3 border-b border-gray-200 flex items-center justify-between text-xs text-gray-500">
+              <div class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-red-500" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                <span class="font-semibold text-gray-800">Gmail Instant Delivery Preview</span>
+                <span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold text-[10px]">Inbox &bull; Just now</span>
+              </div>
+              <div class="flex items-center gap-2 text-gray-400">
+                <span>★</span>
+                <span>Reply</span>
+              </div>
+            </div>
+
+            <!-- Email Content Header -->
+            <div class="p-5 space-y-4 text-xs text-gray-700">
+              <div class="flex items-start justify-between gap-4 pb-3 border-b border-gray-100">
+                <div class="flex items-center gap-3">
+                  <div class="w-9 h-9 rounded-full bg-blue-600 text-white font-bold flex items-center justify-center text-sm shadow-sm">
+                    G
+                  </div>
+                  <div>
+                    <div class="font-bold text-gray-900 text-sm flex items-center gap-1.5">
+                      <span>Google AI Masterclass Team</span>
+                      <span class="font-normal text-gray-400 text-xs">&lt;events@google.com&gt;</span>
+                    </div>
+                    <div class="text-gray-500 text-[11px]">
+                      to <span id="gmailRecipientEmail" class="font-medium text-gray-800">you@domain.com</span>
+                    </div>
+                  </div>
+                </div>
+                <span class="text-[11px] text-gray-400 font-mono">12:25 PM</span>
+              </div>
+
+              <!-- Subject & Body -->
+              <div>
+                <h4 id="gmailSubjectLine" class="text-sm font-bold text-gray-900 mb-2">
+                  Confirmed: Google AI Masterclass Admission Pass [GAI-TIU-2026] ✅
+                </h4>
+                <div class="space-y-2 text-gray-600 leading-relaxed">
+                  <p>Hi <strong id="gmailName" class="text-gray-900">Scholar</strong>,</p>
+                  <p>
+                    Congratulations! Your seat for the <strong>Google AI Masterclass</strong> in exclusive academic partnership with <strong>School of the Future, Techno India University</strong> has been officially approved.
+                  </p>
+                  
+                  <div class="p-3 bg-purple-50/60 rounded-xl border border-purple-100 my-2 space-y-1">
+                    <p class="font-semibold text-purple-900">Session Check-in Protocol:</p>
+                    <p>&bull; <strong>Reporting:</strong> Saturday, Oct 17, 2026 at 09:30 AM IST</p>
+                    <p>&bull; <strong>Venue:</strong> Audi-1, School of the Future Building, TIU Salt Lake Campus</p>
+                    <p>&bull; <strong>Mandatory Checklist:</strong> College ID card + Laptop with Google Chrome</p>
+                  </div>
+
+                  <p>We have attached your scannable Google Wallet pass. We look forward to an electrifying day of multimodal engineering and agent development!</p>
+                </div>
+              </div>
+
+              <!-- Footer simulated attachment preview -->
+              <div class="pt-3 border-t border-gray-100 flex items-center gap-3">
+                <div class="flex items-center gap-2 p-2 rounded-lg bg-gray-50 border border-gray-200">
+                  <svg class="w-4 h-4 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13"></path></svg>
+                  <span class="font-medium text-gray-700 text-[11px]">Google_AI_Pass_Wallet.png</span>
+                  <span class="text-gray-400 text-[10px]">(324 KB)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Actions -->
+          <div class="flex flex-col sm:flex-row items-center gap-3 pt-2">
+            <button 
+              type="button" 
+              id="viewPrintModalBtn"
+              class="w-full sm:flex-1 py-3 px-5 rounded-xl gemini-gradient-bg text-white text-xs sm:text-sm font-semibold hover:opacity-95 shadow-md shadow-purple-500/20 transition flex items-center justify-center gap-2"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+              Print Formal Badge
+            </button>
+            <button 
+              type="button" 
+              id="registerAnotherBtn"
+              class="w-full sm:w-auto py-3 px-5 rounded-xl border border-gray-300 text-gray-700 text-xs sm:text-sm font-semibold hover:bg-gray-50 transition"
+            >
+              Register Another Student
+            </button>
+          </div>
+
+        </div>
+
+        <form id="masterclassForm" novalidate class="space-y-6">
+          
+          <!-- General form error notice -->
+          <div id="formErrorMessage" class="hidden p-4 rounded-2xl bg-rose-50 border border-rose-200 text-rose-700 text-xs sm:text-sm flex items-start gap-3">
+            <svg class="w-5 h-5 shrink-0 text-rose-500 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
+            <div>
+              <p class="font-semibold">Please correct the highlighted fields in this step.</p>
+              <p class="text-xs text-rose-600 mt-0.5">All required fields must be answered to proceed.</p>
+            </div>
+          </div>
+
+          <!-- STEP 1: Pass Type & Tier Selection (+ VIP Checkout if picked) -->
+          <div id="formStep1" class="form-step space-y-5">
+            <div class="flex items-center justify-between pb-2 border-b border-gray-100">
+              <div>
+                <h3 class="text-lg font-bold text-gray-900">Step 1: Choose Your Masterclass Pass</h3>
+                <p class="text-xs text-gray-500">Pick standard free scholar access or upgrade to VIP with networking lunch.</p>
+              </div>
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-purple-50 text-purple-700">1 of 4</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <!-- Free Standard Pass -->
+              <label id="tierCardStandard" class="relative cursor-pointer rounded-2xl p-5 border-2 border-purple-500 bg-purple-50/20 transition-all block hover:shadow-md">
+                <input type="radio" name="ticketTier" value="free" checked class="sr-only">
+                <div class="flex items-start justify-between gap-2 mb-3">
+                  <div>
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-purple-700 bg-purple-100/80 px-2 py-0.5 rounded-full">General Entry</span>
+                    <h4 class="text-lg font-bold text-gray-900 mt-1">Standard Scholar Pass</h4>
+                  </div>
+                  <div class="text-right">
+                    <span class="text-2xl font-black text-gray-900">FREE</span>
+                    <span class="text-[11px] block text-gray-400">₹0</span>
+                  </div>
+                </div>
+
+                <ul class="text-xs text-gray-600 space-y-2 mb-2">
+                  <li class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-emerald-500 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                    Full Access to Keynote & Multimodal Sprint
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-emerald-500 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                    Auditorium General Seating
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-emerald-500 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                    Digital Verified Completion Certificate
+                  </li>
+                  <li class="flex items-center gap-2 text-gray-400 line-through">
+                    <svg class="w-4 h-4 text-gray-300 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                    Executive Lunch with Google AI Experts
+                  </li>
+                </ul>
+              </label>
+
+              <!-- VIP Pass with Lunch -->
+              <label id="tierCardVip" class="relative cursor-pointer rounded-2xl p-5 border-2 border-gray-200 bg-white transition-all block hover:border-amber-400 hover:shadow-md">
+                <span class="absolute -top-3 right-4 bg-gradient-to-r from-amber-500 to-rose-500 text-white font-bold text-[10px] uppercase tracking-wider py-0.5 px-2.5 rounded-full shadow-sm">
+                  Recommended &bull; Limited (50 Seats)
+                </span>
+                <input type="radio" name="ticketTier" value="vip" class="sr-only">
+                
+                <div class="flex items-start justify-between gap-2 mb-3">
+                  <div>
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-amber-700 bg-amber-100/80 px-2 py-0.5 rounded-full">VIP Experience</span>
+                    <h4 class="text-lg font-bold text-gray-900 mt-1">Networking & Lunch Pass</h4>
+                  </div>
+                  <div class="text-right">
+                    <span class="text-2xl font-black text-purple-700">₹499</span>
+                    <span class="text-[11px] block text-emerald-600 font-semibold">All-Inclusive</span>
+                  </div>
+                </div>
+
+                <ul class="text-xs text-gray-700 space-y-2 mb-2">
+                  <li class="flex items-center gap-2 font-medium text-amber-900">
+                    <svg class="w-4 h-4 text-amber-500 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                    <strong>Catered Executive Multi-Course Lunch</strong>
+                  </li>
+                  <li class="flex items-center gap-2 font-medium text-amber-900">
+                    <svg class="w-4 h-4 text-amber-500 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                    <strong>1-on-1 Interaction with Google AI Speakers</strong>
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-emerald-500 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                    Front-Row Reserved Auditorium Seating
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-emerald-500 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                    Official Google AI Swag Pack + Laminated Badge
+                  </li>
+                </ul>
+              </label>
+            </div>
+
+            <!-- VIP Payment Accordion (Shown if VIP picked) -->
+            <div id="paymentSection" class="hidden pt-2 transition-all duration-300">
+              <div class="rounded-2xl border-2 border-purple-200 bg-purple-50/30 p-5 space-y-4">
+                <div class="flex items-center justify-between border-b border-purple-100 pb-3">
+                  <div class="flex items-center gap-2.5">
+                    <div class="w-8 h-8 rounded-lg bg-purple-600 text-white flex items-center justify-center font-bold text-sm">
+                      💳
+                    </div>
+                    <div>
+                      <h4 class="text-sm font-bold text-gray-900">VIP Ticket Payment</h4>
+                      <p class="text-[11px] text-gray-500">Instant reservation & meal token generation</p>
+                    </div>
+                  </div>
+                  <div class="text-right">
+                    <span class="text-xs text-gray-400 block">Total Due</span>
+                    <span class="text-lg font-black text-purple-700">₹499.00</span>
+                  </div>
+                </div>
+
+                <div>
+                  <label class="block text-xs font-semibold text-gray-700 mb-2">Choose Payment Method</label>
+                  <div class="grid grid-cols-2 gap-3">
+                    <label class="cursor-pointer border border-purple-200 rounded-xl p-3 flex items-center gap-2.5 bg-white has-[:checked]:border-purple-600 has-[:checked]:bg-purple-50/50">
+                      <input type="radio" name="paymentMethod" value="upi" checked class="text-purple-600 focus:ring-purple-500">
+                      <div>
+                        <span class="text-xs font-bold text-gray-800 block">UPI / QR Code</span>
+                        <span class="text-[10px] text-gray-400">GPay, PhonePe, Paytm</span>
+                      </div>
+                    </label>
+
+                    <label class="cursor-pointer border border-gray-200 rounded-xl p-3 flex items-center gap-2.5 bg-white has-[:checked]:border-purple-600 has-[:checked]:bg-purple-50/50">
+                      <input type="radio" name="paymentMethod" value="card" class="text-purple-600 focus:ring-purple-500">
+                      <div>
+                        <span class="text-xs font-bold text-gray-800 block">Debit / Credit Card</span>
+                        <span class="text-[10px] text-gray-400">Visa, Mastercard</span>
+                      </div>
+                    </label>
+                  </div>
+                </div>
+
+                <div id="upiPaymentView" class="space-y-3 pt-1">
+                  <div class="flex flex-col sm:flex-row items-center gap-4 bg-white p-4 rounded-xl border border-purple-100">
+                    <div class="w-20 h-20 p-1 rounded-lg bg-white border border-gray-200 flex flex-col items-center justify-center shrink-0">
+                      <svg class="w-16 h-16" viewBox="0 0 100 100" fill="none">
+                        <rect width="100" height="100" fill="white"/>
+                        <rect x="10" y="10" width="28" height="28" stroke="#111827" stroke-width="6"/>
+                        <rect x="18" y="18" width="12" height="12" fill="#111827"/>
+                        <rect x="62" y="10" width="28" height="28" stroke="#111827" stroke-width="6"/>
+                        <rect x="70" y="18" width="12" height="12" fill="#111827"/>
+                        <rect x="10" y="62" width="28" height="28" stroke="#111827" stroke-width="6"/>
+                        <rect x="18" y="70" width="12" height="12" fill="#111827"/>
+                        <rect x="46" y="20" width="8" height="8" fill="#111827"/>
+                        <rect x="46" y="46" width="8" height="8" fill="#111827"/>
+                        <rect x="64" y="64" width="12" height="12" fill="#111827"/>
+                      </svg>
+                      <span class="text-[7px] font-mono text-gray-400 uppercase mt-0.5">Scan UPI</span>
+                    </div>
+
+                    <div class="flex-1 w-full text-xs">
+                      <p class="font-semibold text-gray-800 mb-1">Scan or Enter UPI ID</p>
+                      <div class="flex items-center gap-2">
+                        <input 
+                          type="text" 
+                          id="upiIdInput" 
+                          placeholder="e.g. yourname@okhdfcbank" 
+                          class="form-input-focus w-full px-3 py-2 rounded-lg border border-gray-200 text-xs bg-white"
+                        >
+                        <button type="button" id="verifyUpiBtn" class="px-3 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 font-semibold text-gray-700 transition text-xs whitespace-nowrap">
+                          Verify
+                        </button>
+                      </div>
+                      <p id="err-upi" class="hidden text-xs text-rose-500 mt-1"></p>
+                    </div>
+                  </div>
+                </div>
+
+                <div id="cardPaymentView" class="hidden space-y-3 pt-1">
+                  <div class="bg-white p-4 rounded-xl border border-purple-100 space-y-3 text-xs">
+                    <div>
+                      <label class="block font-semibold text-gray-700 mb-1">Card Number</label>
+                      <input 
+                        type="text" 
+                        id="cardNumber" 
+                        maxlength="19" 
+                        placeholder="4532 •••• •••• 8920" 
+                        class="form-input-focus w-full px-3 py-2 rounded-lg border border-gray-200 font-mono"
+                      >
+                    </div>
+                    <div class="grid grid-cols-2 gap-3">
+                      <div>
+                        <label class="block font-semibold text-gray-700 mb-1">Expiry MM/YY</label>
+                        <input 
+                          type="text" 
+                          id="cardExpiry" 
+                          maxlength="5" 
+                          placeholder="12/28" 
+                          class="form-input-focus w-full px-3 py-2 rounded-lg border border-gray-200 font-mono"
+                        >
+                      </div>
+                      <div>
+                        <label class="block font-semibold text-gray-700 mb-1">CVV</label>
+                        <input 
+                          type="password" 
+                          id="cardCvv" 
+                          maxlength="4" 
+                          placeholder="•••" 
+                          class="form-input-focus w-full px-3 py-2 rounded-lg border border-gray-200 font-mono"
+                        >
+                      </div>
+                    </div>
+                    <p id="err-card" class="hidden text-xs text-rose-500 mt-1"></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 2: Personal Information -->
+          <div id="formStep2" class="form-step hidden space-y-4">
+            <div class="flex items-center justify-between pb-2 border-b border-gray-100">
+              <div>
+                <h3 class="text-lg font-bold text-gray-900">Step 2: Attendee Personal Details</h3>
+                <p class="text-xs text-gray-500">Provide contact details where your confirmation and badge will be sent.</p>
+              </div>
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-purple-50 text-purple-700">2 of 4</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="sm:col-span-2">
+                <label for="fullName" class="block text-xs font-semibold text-gray-700 mb-1">
+                  Full Name <span class="text-rose-500">*</span>
+                </label>
+                <input 
+                  type="text" 
+                  id="fullName" 
+                  name="fullName"
+                  placeholder="e.g. Sagnik Banerjee" 
+                  class="form-input-focus w-full px-4 py-3 rounded-xl border border-gray-200 text-sm text-gray-900 bg-white"
+                >
+                <p id="err-fullName" class="hidden text-xs text-rose-500 mt-1 font-medium"></p>
+              </div>
+
+              <div>
+                <label for="email" class="block text-xs font-semibold text-gray-700 mb-1">
+                  Email Address <span class="text-rose-500">*</span>
+                </label>
+                <input 
+                  type="email" 
+                  id="email" 
+                  name="email"
+                  placeholder="name@technoindiaeducation.com" 
+                  class="form-input-focus w-full px-4 py-3 rounded-xl border border-gray-200 text-sm text-gray-900 bg-white"
+                >
+                <p id="err-email" class="hidden text-xs text-rose-500 mt-1 font-medium"></p>
+              </div>
+
+              <div>
+                <label for="phone" class="block text-xs font-semibold text-gray-700 mb-1">
+                  WhatsApp / Phone Number <span class="text-rose-500">*</span>
+                </label>
+                <input 
+                  type="tel" 
+                  id="phone" 
+                  name="phone"
+                  placeholder="10-digit mobile number" 
+                  maxlength="10"
+                  class="form-input-focus w-full px-4 py-3 rounded-xl border border-gray-200 text-sm text-gray-900 bg-white"
+                >
+                <p id="err-phone" class="hidden text-xs text-rose-500 mt-1 font-medium"></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 3: Academic Affiliation -->
+          <div id="formStep3" class="form-step hidden space-y-4">
+            <div class="flex items-center justify-between pb-2 border-b border-gray-100">
+              <div>
+                <h3 class="text-lg font-bold text-gray-900">Step 3: Academic Credentials</h3>
+                <p class="text-xs text-gray-500">Verify your enrollment with School of the Future or TIU affiliate campuses.</p>
+              </div>
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-purple-50 text-purple-700">3 of 4</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="sm:col-span-2">
+                <label for="college" class="block text-xs font-semibold text-gray-700 mb-1">
+                  University / College <span class="text-rose-500">*</span>
+                </label>
+                <input 
+                  type="text" 
+                  id="college" 
+                  name="college"
+                  value="School of the Future, Techno India University"
+                  class="form-input-focus w-full px-4 py-3 rounded-xl border border-gray-200 text-sm text-gray-900 bg-gray-50 font-medium"
+                >
+                <p id="err-college" class="hidden text-xs text-rose-500 mt-1 font-medium"></p>
+              </div>
+
+              <div>
+                <label for="studentId" class="block text-xs font-semibold text-gray-700 mb-1">
+                  Student ID / University Roll <span class="text-rose-500">*</span>
+                </label>
+                <input 
+                  type="text" 
+                  id="studentId" 
+                  name="studentId"
+                  placeholder="e.g. TIU/SOF/2023/0482" 
+                  class="form-input-focus w-full px-4 py-3 rounded-xl border border-gray-200 text-sm text-gray-900 bg-white"
+                >
+                <p id="err-studentId" class="hidden text-xs text-rose-500 mt-1 font-medium"></p>
+              </div>
+
+              <div>
+                <label for="department" class="block text-xs font-semibold text-gray-700 mb-1">
+                  Department / Stream <span class="text-rose-500">*</span>
+                </label>
+                <select 
+                  id="department" 
+                  name="department"
+                  class="form-input-focus w-full px-4 py-3 rounded-xl border border-gray-200 text-sm text-gray-900 bg-white"
+                >
+                  <option value="">Select your department</option>
+                  <option value="Computer Science & Engineering (CSE)">Computer Science & Engineering (CSE)</option>
+                  <option value="Artificial Intelligence & Data Science">AI & Data Science (School of the Future)</option>
+                  <option value="Information Technology (IT)">Information Technology (IT)</option>
+                  <option value="Electronics & Communication (ECE)">Electronics & Communication (ECE)</option>
+                  <option value="BCA / MCA">Computer Applications (BCA / MCA)</option>
+                  <option value="Other Technology Domain">Other Technology Domain</option>
+                </select>
+                <p id="err-department" class="hidden text-xs text-rose-500 mt-1 font-medium"></p>
+              </div>
+
+              <div class="sm:col-span-2">
+                <label for="semester" class="block text-xs font-semibold text-gray-700 mb-1">
+                  Current Semester <span class="text-rose-500">*</span>
+                </label>
+                <select 
+                  id="semester" 
+                  name="semester"
+                  class="form-input-focus w-full px-4 py-3 rounded-xl border border-gray-200 text-sm text-gray-900 bg-white"
+                >
+                  <option value="">Select semester</option>
+                  <option value="1st Semester">Semester 1</option>
+                  <option value="2nd Semester">Semester 2</option>
+                  <option value="3rd Semester">Semester 3</option>
+                  <option value="4th Semester">Semester 4</option>
+                  <option value="5th Semester">Semester 5</option>
+                  <option value="6th Semester">Semester 6</option>
+                  <option value="7th Semester">Semester 7</option>
+                  <option value="8th Semester">Semester 8</option>
+                  <option value="Postgraduate / Researcher">Postgraduate / Research Scholar</option>
+                </select>
+                <p id="err-semester" class="hidden text-xs text-rose-500 mt-1 font-medium"></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 4: Preferences, "I'm Feeling Lucky" button & Confirmation -->
+          <div id="formStep4" class="form-step hidden space-y-5">
+            <div class="flex items-center justify-between pb-2 border-b border-gray-100">
+              <div>
+                <h3 class="text-lg font-bold text-gray-900">Step 4: Session Track & Confirm</h3>
+                <p class="text-xs text-gray-500">Pick your hands-on breakout lab or use Google's playful randomizer.</p>
+              </div>
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-purple-50 text-purple-700">4 of 4</span>
+            </div>
+
+            <!-- "I'm Feeling Lucky" Section -->
+            <div class="p-3.5 bg-gradient-to-r from-blue-50/70 via-purple-50/60 to-pink-50/70 rounded-2xl border border-purple-100 flex flex-col sm:flex-row items-center justify-between gap-3">
+              <div class="text-center sm:text-left">
+                <span class="text-[11px] font-bold text-purple-900 flex items-center justify-center sm:justify-start gap-1">
+                  <span>✨</span> Undecided between the deep-dive tracks?
+                </span>
+                <p class="text-[11px] text-gray-500 mt-0.5">Let Gemini foundation reasoning choose an optimal lab path for you.</p>
+              </div>
+
+              <!-- GOOGLE STYLE "I'M FEELING LUCKY" BUTTON -->
+              <button 
+                type="button" 
+                id="luckyBtn"
+                class="px-4 py-2 rounded-xl bg-white border border-purple-200 text-xs font-bold text-purple-700 hover:bg-purple-50 shadow-sm transition hover:scale-105 active:scale-95 shrink-0 flex items-center gap-1.5"
+              >
+                <span>🎲</span> I'm Feeling Lucky
+              </button>
+            </div>
+
+            <!-- Track Preference Options -->
+            <div class="space-y-3">
+              <label id="trackLabelA" class="cursor-pointer border-2 border-purple-600 bg-purple-50/30 rounded-2xl p-4 flex items-start gap-3 transition">
+                <input type="radio" name="trackPreference" value="Track A: Multimodal Vision & Gemini API" checked class="mt-1 text-purple-600 focus:ring-purple-500">
+                <div>
+                  <div class="text-sm font-bold text-gray-900">Track A: Gemini API & Multimodal Reasoning</div>
+                  <div class="text-xs text-gray-600 mt-0.5">Real-time video grounding, audio processing, structured output schemas, and Gemini prompt caching.</div>
+                </div>
+              </label>
+
+              <label id="trackLabelB" class="cursor-pointer border-2 border-gray-200 rounded-2xl p-4 flex items-start gap-3 transition hover:border-gray-300">
+                <input type="radio" name="trackPreference" value="Track B: Autonomous Agents & Tool Use" class="mt-1 text-purple-600 focus:ring-purple-500">
+                <div>
+                  <div class="text-sm font-bold text-gray-900">Track B: Autonomous Agents & Vertex AI Tool Grounding</div>
+                  <div class="text-xs text-gray-600 mt-0.5">Function calling loops, LangChain integration, enterprise search grounding, and self-correcting agent chains.</div>
+                </div>
+              </label>
+            </div>
+
+            <!-- Terms Confirmation Checkbox -->
+            <div class="pt-2">
+              <label class="flex items-start gap-3 cursor-pointer">
+                <input type="checkbox" id="termsCheck" class="mt-1 h-4 w-4 rounded border-gray-300 text-purple-600 focus:ring-purple-500">
+                <span class="text-xs text-gray-600">
+                  I verify that I am an enrolled student and will present my University ID along with a Wi-Fi enabled laptop for the lab sprints.
+                </span>
+              </label>
+              <p id="err-termsCheck" class="hidden text-xs text-rose-500 mt-1 font-medium"></p>
+            </div>
+          </div>
+
+          <!-- STEPPER NAVIGATION BUTTONS -->
+          <div class="pt-4 flex items-center justify-between border-t border-gray-100 gap-3">
+            <button 
+              type="button" 
+              id="prevStepBtn" 
+              class="hidden px-5 py-3 rounded-xl border border-gray-300 text-xs sm:text-sm font-semibold text-gray-700 hover:bg-gray-50 transition"
+            >
+              ← Back
+            </button>
+
+            <div class="ml-auto flex items-center gap-3">
+              <button 
+                type="button" 
+                id="nextStepBtn" 
+                class="px-6 py-3 rounded-xl gemini-gradient-bg text-white text-xs sm:text-sm font-semibold hover:opacity-95 shadow-md shadow-purple-500/20 transition flex items-center gap-1.5"
+              >
+                <span>Continue</span>
+                <span>→</span>
+              </button>
+
+              <button 
+                type="submit" 
+                id="submitBtn" 
+                class="hidden px-8 py-3.5 rounded-xl gemini-gradient-bg text-white text-xs sm:text-sm font-semibold hover:opacity-95 shadow-lg shadow-purple-500/25 transition transform active:scale-95"
+              >
+                <span id="submitBtnText">Complete Registration</span>
+              </button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </main>
+
+  <section class="py-16 bg-slate-50/80 border-t border-gray-100">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Academic host brand card -->
+      <div class="bg-white rounded-3xl p-7 sm:p-9 border border-gray-100 shadow-sm flex flex-col md:flex-row items-center justify-between gap-8 mb-12">
+        <div class="flex flex-col sm:flex-row items-center gap-6 text-center sm:text-left">
+          <div class="p-4 bg-gray-50/90 rounded-2xl border border-gray-100 shadow-inner flex items-center justify-center shrink-0">
+            <svg class="h-16 sm:h-20 w-auto max-w-[310px] sm:max-w-[380px]" viewBox="0 0 960 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <text x="15" y="86" font-family="'Plus Jakarta Sans', 'Inter', sans-serif" font-size="52" font-weight="500" fill="#000000" letter-spacing="-0.5">School of the</text>
+              <text x="12" y="178" font-family="'Plus Jakarta Sans', 'Inter', sans-serif" font-size="104" font-weight="900" letter-spacing="-1.5" fill="#000000">FUTURE</text>
+              <g transform="translate(485, 126)">
+                <circle cx="0" cy="0" r="66" fill="#ED1C24"/>
+                <g fill="#ffffff">
+                  <path d="M-10 -46 L-4 -46 L-8 -26 L-14 -26 Z"/>
+                  <path d="M-15 -21 L16 -21 L12 -12 L-4 -12 L-4 15 C-4 22 -1 25 5 25 C10 25 14 23 17 20 L21 28 C16 32 9 34 2 34 C-10 34 -15 27 -15 15 L-15 -12 L-23 -12 L-19 -21 Z"/>
+                  <path d="M3 -38 L14 -38 L10 -25 L-1 -25 Z"/>
+                  <path d="M12 -8 L24 -8 L13 25 L3 25 Z"/>
+                </g>
+                <path id="card-badge-curve-bot" d="M -77,42 A 88,88 0 0,0 78,35" fill="none"/>
+                <text font-family="'Plus Jakarta Sans', 'Inter', sans-serif" font-size="14.5" font-weight="800" fill="#000000" letter-spacing="2.8">
+                  <textPath href="#card-badge-curve-bot" startOffset="50%" text-anchor="middle">TECHNO INDIA™ GROUP</textPath>
+                </text>
+              </g>
+              <text x="600" y="86" font-family="'Plus Jakarta Sans', 'Inter', sans-serif" font-size="58" font-weight="900" fill="#000000" letter-spacing="-1.5">techno india</text>
+              <text x="600" y="146" font-family="'Plus Jakarta Sans', 'Inter', sans-serif" font-size="62" font-weight="900" fill="#000000" letter-spacing="-1.5">university</text>
+              <line x1="600" y1="168" x2="805" y2="168" stroke="#000000" stroke-width="2.8"/>
+              <text x="602" y="208" font-family="'Plus Jakarta Sans', 'Inter', sans-serif" font-size="28" font-weight="600" letter-spacing="4.5" fill="#000000">WEST BENGAL</text>
+            </svg>
+          </div>
+
+          <div>
+            <div class="inline-flex items-center gap-1.5 text-[11px] uppercase font-bold tracking-wider text-purple-700 bg-purple-50 px-2.5 py-0.5 rounded-full mb-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-purple-600"></span>
+              Official Academic Host
+            </div>
+            <h3 class="text-xl font-display font-bold text-gray-900">School of the Future</h3>
+            <p class="text-xs sm:text-sm text-gray-500 font-medium">Techno India University, Kolkata, West Bengal</p>
+          </div>
+        </div>
+
+        <div class="text-xs sm:text-sm text-gray-600 max-w-sm md:text-right border-t md:border-t-0 pt-4 md:pt-0 border-gray-100">
+          Cultivating premier engineering skills in Multimodal AI, Autonomous Agents, and Quantum Systems in direct synergy with Google Developer Ecosystems.
+        </div>
+      </div>
+
+      <!-- Quick FAQ Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="p-5 rounded-2xl bg-white border border-gray-100">
+          <h4 class="text-sm font-bold text-gray-900 mb-1">Is there any registration fee?</h4>
+          <p class="text-xs text-gray-600">The Standard Scholar Pass is completely free and sponsored for students of Techno India University and registered partner institutions.</p>
+        </div>
+        <div class="p-5 rounded-2xl bg-white border border-gray-100">
+          <h4 class="text-sm font-bold text-gray-900 mb-1">What should I bring?</h4>
+          <p class="text-xs text-gray-600">Bring your valid University ID card and a laptop with Google Chrome for the live multimodal coding labs.</p>
+        </div>
+        <div class="p-5 rounded-2xl bg-white border border-gray-100">
+          <h4 class="text-sm font-bold text-gray-900 mb-1">What does the VIP Pass include?</h4>
+          <p class="text-xs text-gray-600">VIP Pass holders receive access to the executive faculty lunch, 1-on-1 interaction with Google AI speakers, and guaranteed front-row seating.</p>
+        </div>
+        <div class="p-5 rounded-2xl bg-white border border-gray-100">
+          <h4 class="text-sm font-bold text-gray-900 mb-1">When will certificates be issued?</h4>
+          <p class="text-xs text-gray-600">Digital completion certificates co-issued by Google and School of the Future, TIU will be emailed within 48 hours.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div id="geminiChatWidget" class="fixed bottom-6 right-6 z-50">
+    
+    <!-- Collapsed Floating Button -->
+    <button 
+      type="button" 
+      id="chatToggleBtn"
+      class="group relative flex items-center gap-2.5 px-4 py-3 rounded-full gemini-gradient-bg text-white shadow-xl shadow-purple-500/30 hover:scale-105 active:scale-95 transition-all"
+    >
+      <span class="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center text-sm shadow-inner group-hover:rotate-12 transition-transform">
+        ✦
+      </span>
+      <span class="text-xs font-bold tracking-tight">Ask Gemini</span>
+      <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+    </button>
+
+    <!-- Expanded Chat Container (Hidden by default) -->
+    <div 
+      id="chatPanel" 
+      class="hidden absolute bottom-16 right-0 w-[350px] sm:w-[380px] bg-white rounded-3xl shadow-2xl border border-purple-100 overflow-hidden flex flex-col transition-all duration-300 origin-bottom-right"
+      style="height: 480px;"
+    >
+      <!-- Chat Header -->
+      <div class="gemini-gradient-bg p-4 text-white flex items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-xl bg-white/20 backdrop-blur-md flex items-center justify-center text-base">
+            ✦
+          </div>
+          <div>
+            <h4 class="text-xs font-bold font-display">Gemini Event Assistant</h4>
+            <p class="text-[10px] text-purple-100">Live intelligence on schedules & passes</p>
+          </div>
+        </div>
+        <button id="closeChatBtn" class="w-7 h-7 rounded-full bg-white/20 hover:bg-white/30 text-white flex items-center justify-center text-xs transition">
+          ✕
+        </button>
+      </div>
+
+      <!-- Chat Messages Scroll Area -->
+      <div id="chatMessages" class="flex-1 p-4 overflow-y-auto custom-scrollbar space-y-3 text-xs bg-slate-50/50">
+        <!-- Bot Greeting -->
+        <div class="flex items-start gap-2">
+          <div class="w-6 h-6 rounded-lg bg-purple-600 text-white flex items-center justify-center text-[10px] font-bold shrink-0 mt-0.5">
+            ✦
+          </div>
+          <div class="bg-white p-3 rounded-2xl rounded-tl-sm border border-gray-100 shadow-xs max-w-[85%] text-gray-800 leading-relaxed">
+            Hello! I'm Gemini, your event copilot for the Google AI Masterclass at School of the Future, TIU. Ask me anything or select a prompt below!
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Question Chips -->
+      <div class="p-2.5 bg-white border-t border-gray-100 overflow-x-auto whitespace-nowrap flex gap-1.5 custom-scrollbar">
+        <button type="button" class="faq-chip px-2.5 py-1 rounded-full bg-purple-50 hover:bg-purple-100 text-purple-700 text-[10px] font-medium border border-purple-100 transition shrink-0" data-q="Is this event free?">
+          Is it free?
+        </button>
+        <button type="button" class="faq-chip px-2.5 py-1 rounded-full bg-blue-50 hover:bg-blue-100 text-blue-700 text-[10px] font-medium border border-blue-100 transition shrink-0" data-q="What should I bring?">
+          What to bring?
+        </button>
+        <button type="button" class="faq-chip px-2.5 py-1 rounded-full bg-pink-50 hover:bg-pink-100 text-pink-700 text-[10px] font-medium border border-pink-100 transition shrink-0" data-q="What is the VIP pass?">
+          VIP perks & lunch?
+        </button>
+        <button type="button" class="faq-chip px-2.5 py-1 rounded-full bg-slate-100 hover:bg-slate-200 text-gray-700 text-[10px] font-medium transition shrink-0" data-q="Where is the venue?">
+          Venue location?
+        </button>
+      </div>
+
+      <!-- Chat Input Field -->
+      <form id="chatForm" class="p-3 bg-white border-t border-gray-100 flex items-center gap-2">
+        <input 
+          type="text" 
+          id="chatInput"
+          placeholder="Ask Gemini a question..." 
+          class="flex-1 px-3 py-2 rounded-xl border border-gray-200 text-xs focus:outline-none focus:border-purple-600 bg-gray-50 focus:bg-white"
+        >
+        <button type="submit" class="w-8 h-8 rounded-xl gemini-gradient-bg text-white flex items-center justify-center text-xs shrink-0 hover:opacity-90 transition">
+          ➤
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Formal Printable Badge Modal -->
+  <div id="printModal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4 overflow-y-auto">
+    <div class="relative w-full max-w-lg bg-white rounded-3xl shadow-2xl overflow-hidden p-6 sm:p-8 space-y-6 animate-in fade-in zoom-in-95">
+      <div class="flex items-center justify-between border-b border-gray-100 pb-3">
+        <h3 class="text-base font-bold text-gray-900">Official Masterclass Badge</h3>
+        <button id="closePrintModal" class="text-gray-400 hover:text-gray-700 text-sm font-bold">✕</button>
+      </div>
+
+      <div class="border-2 border-dashed border-purple-200 rounded-2xl p-5 bg-purple-50/20 text-center space-y-3">
+        <div class="inline-block p-2 rounded-xl bg-purple-100 text-purple-800 text-xs font-bold uppercase">
+          Official Entry Credential
+        </div>
+        <h4 id="printModalName" class="text-xl font-bold text-gray-900">--</h4>
+        <p id="printModalRoll" class="font-mono text-xs text-gray-500">--</p>
+        <div class="text-xs text-gray-600">
+          <p id="printModalDept" class="font-semibold text-gray-800">--</p>
+          <p>School of the Future &bull; Techno India University</p>
+        </div>
+        <div class="pt-2">
+          <span id="printModalId" class="inline-block font-mono font-bold text-xs bg-white px-3 py-1.5 rounded-lg border border-purple-200 text-purple-700">GAI-TIU-2026</span>
+        </div>
+      </div>
+
+      <div class="flex gap-3">
+        <button type="button" id="triggerPrintBtn" class="flex-1 py-3 rounded-xl bg-gray-900 text-white text-xs font-semibold hover:bg-black transition">
+          Print Badge Now
+        </button>
+        <button type="button" id="donePrintModal" class="flex-1 py-3 rounded-xl border border-gray-300 text-gray-700 text-xs font-semibold hover:bg-gray-50 transition">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t border-gray-100 py-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500">
+      <div class="flex items-center gap-2">
+        <span class="font-semibold text-gray-800">Google AI Masterclass</span>
+        <span>&bull;</span>
+        <span>School of the Future, Techno India University</span>
+      </div>
+      <div>
+        Organized in collaboration with School of the Future &bull; All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+      /* ----------------------------------------------------
+         1. GEMINI HERO TITLE STREAMING / TYPING ANIMATION
+      ---------------------------------------------------- */
+      const heroTypingEl = document.getElementById('heroTypingText');
+      const heroHighlightEl = document.getElementById('heroHighlightText');
+      const heroCursor = document.getElementById('heroCursor');
+
+      const prefixPhrase = "Architecting Tomorrow with";
+      const highlightPhrase = "Gemini & Multimodal AI";
+
+      let charIndex = 0;
+      heroTypingEl.textContent = "";
+      heroHighlightEl.textContent = "";
+
+      function typePrefix() {
+        if (charIndex < prefixPhrase.length) {
+          heroTypingEl.textContent += prefixPhrase.charAt(charIndex);
+          charIndex++;
+          setTimeout(typePrefix, 32);
+        } else {
+          charIndex = 0;
+          setTimeout(typeHighlight, 120);
+        }
+      }
+
+      function typeHighlight() {
+        if (charIndex < highlightPhrase.length) {
+          heroHighlightEl.textContent += highlightPhrase.charAt(charIndex);
+          charIndex++;
+          setTimeout(typeHighlight, 40);
+        } else {
+          if (heroCursor) heroCursor.style.animation = "blink 1.2s infinite";
+        }
+      }
+
+      setTimeout(typePrefix, 250);
+
+      /* ----------------------------------------------------
+         2. SEAT AVAILABILITY DATA STATE
+      ---------------------------------------------------- */
+      const TOTAL_CAPACITY = 350;
+      let registeredCount = 147; // 147 / 350 = 42%
+
+      const seatsRegisteredText = document.getElementById('seatsRegisteredText');
+      const seatsProgressBar = document.getElementById('seatsProgressBar');
+      const seatsLeftCount = document.getElementById('seatsLeftCount');
+      const seatsPercentBadge = document.getElementById('seatsPercentBadge');
+      const navSeatStatus = document.getElementById('navSeatStatus');
+
+      function updateSeatsUI() {
+        const percent = ((registeredCount / TOTAL_CAPACITY) * 100).toFixed(0);
+        const remaining = Math.max(0, TOTAL_CAPACITY - registeredCount);
+
+        if (seatsRegisteredText) seatsRegisteredText.textContent = registeredCount;
+        if (seatsProgressBar) seatsProgressBar.style.width = `${percent}%`;
+        if (seatsLeftCount) seatsLeftCount.textContent = `${remaining} seats`;
+        if (seatsPercentBadge) seatsPercentBadge.textContent = `${percent}% Full`;
+        if (navSeatStatus) navSeatStatus.textContent = `Seats ${percent}% Filled`;
+      }
+      updateSeatsUI();
+
+      /* ----------------------------------------------------
+         3. MULTI-STEP WIZARD FORM LOGIC
+      ---------------------------------------------------- */
+      let currentStep = 1;
+      const totalSteps = 4;
+      const form = document.getElementById('masterclassForm');
+      const formStepper = document.getElementById('formStepper');
+      const stepperFill = document.getElementById('stepperFill');
+      const prevStepBtn = document.getElementById('prevStepBtn');
+      const nextStepBtn = document.getElementById('nextStepBtn');
+      const submitBtn = document.getElementById('submitBtn');
+      const formErrorMessage = document.getElementById('formErrorMessage');
+
+      const stepContainers = {
+        1: document.getElementById('formStep1'),
+        2: document.getElementById('formStep2'),
+        3: document.getElementById('formStep3'),
+        4: document.getElementById('formStep4')
+      };
+
+      const stepDots = {
+        1: document.getElementById('stepDot1'),
+        2: document.getElementById('stepDot2'),
+        3: document.getElementById('stepDot3'),
+        4: document.getElementById('stepDot4')
+      };
+
+      // Ticket Tier elements
+      const tierInputs = document.querySelectorAll('input[name="ticketTier"]');
+      const tierCardStandard = document.getElementById('tierCardStandard');
+      const tierCardVip = document.getElementById('tierCardVip');
+      const paymentSection = document.getElementById('paymentSection');
+      const submitBtnText = document.getElementById('submitBtnText');
+      let selectedTier = 'free';
+
+      tierInputs.forEach(radio => {
+        radio.addEventListener('change', (e) => {
+          selectedTier = e.target.value;
+          if (selectedTier === 'vip') {
+            tierCardVip.classList.add('border-amber-500', 'bg-amber-50/20');
+            tierCardVip.classList.remove('border-gray-200', 'bg-white');
+            tierCardStandard.classList.remove('border-purple-500', 'bg-purple-50/20');
+            tierCardStandard.classList.add('border-gray-200', 'bg-white');
+            paymentSection.classList.remove('hidden');
+            submitBtnText.textContent = 'Pay ₹499 & Confirm VIP Pass';
+          } else {
+            tierCardStandard.classList.add('border-purple-500', 'bg-purple-50/20');
+            tierCardStandard.classList.remove('border-gray-200', 'bg-white');
+            tierCardVip.classList.remove('border-amber-500', 'bg-amber-50/20');
+            tierCardVip.classList.add('border-gray-200', 'bg-white');
+            paymentSection.classList.add('hidden');
+            submitBtnText.textContent = 'Complete Free Registration';
+          }
+        });
+      });
+
+      // Payment Method Toggle
+      const paymentMethodInputs = document.querySelectorAll('input[name="paymentMethod"]');
+      const upiPaymentView = document.getElementById('upiPaymentView');
+      const cardPaymentView = document.getElementById('cardPaymentView');
+      const verifyUpiBtn = document.getElementById('verifyUpiBtn');
+      const upiIdInput = document.getElementById('upiIdInput');
+      const cardNumber = document.getElementById('cardNumber');
+
+      paymentMethodInputs.forEach(radio => {
+        radio.addEventListener('change', (e) => {
+          if (e.target.value === 'upi') {
+            upiPaymentView.classList.remove('hidden');
+            cardPaymentView.classList.add('hidden');
+          } else {
+            cardPaymentView.classList.remove('hidden');
+            upiPaymentView.classList.add('hidden');
+          }
+        });
+      });
+
+      if (verifyUpiBtn) {
+        verifyUpiBtn.addEventListener('click', () => {
+          const val = upiIdInput.value.trim();
+          const errUpi = document.getElementById('err-upi');
+          if (!val || !val.includes('@')) {
+            errUpi.textContent = 'Please enter a valid UPI ID (e.g. name@okaxis)';
+            errUpi.classList.remove('hidden');
+          } else {
+            errUpi.classList.add('hidden');
+            verifyUpiBtn.textContent = '✓ Verified';
+            verifyUpiBtn.className = 'px-3 py-2 rounded-lg bg-emerald-100 text-emerald-800 font-semibold transition text-xs';
+          }
+        });
+      }
+
+      if (cardNumber) {
+        cardNumber.addEventListener('input', (e) => {
+          let val = e.target.value.replace(/\D/g, '').substring(0, 16);
+          e.target.value = val.match(/.{1,4}/g)?.join(' ') || val;
+        });
+      }
+
+      // Fields map for validation
+      const fields = {
+        fullName: document.getElementById('fullName'),
+        email: document.getElementById('email'),
+        phone: document.getElementById('phone'),
+        college: document.getElementById('college'),
+        studentId: document.getElementById('studentId'),
+        department: document.getElementById('department'),
+        semester: document.getElementById('semester'),
+        termsCheck: document.getElementById('termsCheck')
+      };
+
+      function showError(fieldKey, message) {
+        const input = fields[fieldKey];
+        const errorEl = document.getElementById(`err-${fieldKey}`);
+        if (input) {
+          if (input.type === 'checkbox') {
+            input.classList.add('ring-2', 'ring-rose-500');
+          } else {
+            input.classList.add('border-rose-500', 'bg-rose-50/30');
+            input.classList.remove('border-gray-200');
+          }
+        }
+        if (errorEl) {
+          errorEl.textContent = message;
+          errorEl.classList.remove('hidden');
+        }
+      }
+
+      function clearError(fieldKey) {
+        const input = fields[fieldKey];
+        const errorEl = document.getElementById(`err-${fieldKey}`);
+        if (input) {
+          if (input.type === 'checkbox') {
+            input.classList.remove('ring-2', 'ring-rose-500');
+          } else {
+            input.classList.remove('border-rose-500', 'bg-rose-50/30');
+            input.classList.add('border-gray-200');
+          }
+        }
+        if (errorEl) {
+          errorEl.textContent = '';
+          errorEl.classList.add('hidden');
+        }
+      }
+
+      // Live error clearing
+      Object.keys(fields).forEach(key => {
+        const el = fields[key];
+        if (el) {
+          const ev = (el.type === 'checkbox' || el.tagName === 'SELECT') ? 'change' : 'input';
+          el.addEventListener(ev, () => {
+            clearError(key);
+            formErrorMessage.classList.add('hidden');
+          });
+        }
+      });
+
+      function validateStep(step) {
+        let valid = true;
+        formErrorMessage.classList.add('hidden');
+
+        if (step === 1) {
+          if (selectedTier === 'vip') {
+            const method = document.querySelector('input[name="paymentMethod"]:checked')?.value || 'upi';
+            if (method === 'upi') {
+              const upiVal = upiIdInput.value.trim();
+              if (!upiVal || !upiVal.includes('@')) {
+                const errUpi = document.getElementById('err-upi');
+                errUpi.textContent = 'Please enter a valid UPI address';
+                errUpi.classList.remove('hidden');
+                valid = false;
+              }
+            } else {
+              const cardVal = cardNumber.value.replace(/\s+/g, '');
+              if (cardVal.length < 15) {
+                const errCard = document.getElementById('err-card');
+                errCard.textContent = 'Please enter a valid card number';
+                errCard.classList.remove('hidden');
+                valid = false;
+              }
+            }
+          }
+        } else if (step === 2) {
+          const nameVal = fields.fullName.value.trim();
+          if (!nameVal || nameVal.length < 3) {
+            showError('fullName', 'Please enter your full name (at least 3 characters)');
+            valid = false;
+          }
+          const emailVal = fields.email.value.trim();
+          if (!emailVal || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)) {
+            showError('email', 'Please provide a valid email format');
+            valid = false;
+          }
+          const phoneVal = fields.phone.value.replace(/\D/g, '');
+          if (phoneVal.length !== 10) {
+            showError('phone', 'Please enter a 10-digit mobile number');
+            valid = false;
+          }
+        } else if (step === 3) {
+          if (!fields.college.value.trim()) {
+            showError('college', 'College or institute name is required');
+            valid = false;
+          }
+          if (!fields.studentId.value.trim()) {
+            showError('studentId', 'Student ID / University Roll is required');
+            valid = false;
+          }
+          if (!fields.department.value) {
+            showError('department', 'Please select your department');
+            valid = false;
+          }
+          if (!fields.semester.value) {
+            showError('semester', 'Please select your semester');
+            valid = false;
+          }
+        } else if (step === 4) {
+          if (!fields.termsCheck.checked) {
+            showError('termsCheck', 'Please confirm you will bring your student ID and laptop');
+            valid = false;
+          }
+        }
+
+        if (!valid) {
+          formErrorMessage.classList.remove('hidden');
+        }
+        return valid;
+      }
+
+      function updateStepperUI() {
+        for (let i = 1; i <= totalSteps; i++) {
+          if (i === currentStep) {
+            stepContainers[i].classList.remove('hidden');
+            stepDots[i].className = 'w-9 h-9 rounded-full bg-purple-600 text-white font-bold text-xs flex items-center justify-center shadow-md transition-all scale-110';
+          } else {
+            stepContainers[i].classList.add('hidden');
+            if (i < currentStep) {
+              stepDots[i].className = 'w-9 h-9 rounded-full bg-emerald-500 text-white font-bold text-xs flex items-center justify-center transition-all';
+              stepDots[i].textContent = '✓';
+            } else {
+              stepDots[i].className = 'w-9 h-9 rounded-full bg-gray-200 text-gray-600 font-bold text-xs flex items-center justify-center transition-all';
+              stepDots[i].textContent = i;
+            }
+          }
+        }
+
+        const fillPercent = ((currentStep - 1) / (totalSteps - 1)) * 100;
+        stepperFill.style.width = `${fillPercent}%`;
+
+        if (currentStep === 1) {
+          prevStepBtn.classList.add('hidden');
+        } else {
+          prevStepBtn.classList.remove('hidden');
+        }
+
+        if (currentStep === totalSteps) {
+          nextStepBtn.classList.add('hidden');
+          submitBtn.classList.remove('hidden');
+        } else {
+          nextStepBtn.classList.remove('hidden');
+          submitBtn.classList.add('hidden');
+        }
+      }
+
+      nextStepBtn.addEventListener('click', () => {
+        if (validateStep(currentStep)) {
+          currentStep++;
+          updateStepperUI();
+          document.getElementById('register').scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+
+      prevStepBtn.addEventListener('click', () => {
+        if (currentStep > 1) {
+          currentStep--;
+          updateStepperUI();
+        }
+      });
+
+      document.querySelectorAll('.stepper-indicator').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const target = parseInt(btn.getAttribute('data-step'));
+          if (target < currentStep) {
+            currentStep = target;
+            updateStepperUI();
+          }
+        });
+      });
+
+      /* ----------------------------------------------------
+         4. GOOGLE-STYLE "I'M FEELING LUCKY" BUTTON
+      ---------------------------------------------------- */
+      const luckyBtn = document.getElementById('luckyBtn');
+      const trackRadios = document.querySelectorAll('input[name="trackPreference"]');
+      const trackLabelA = document.getElementById('trackLabelA');
+      const trackLabelB = document.getElementById('trackLabelB');
+
+      function syncTrackStyles() {
+        const selected = document.querySelector('input[name="trackPreference"]:checked')?.value;
+        if (selected && selected.includes('Track A')) {
+          trackLabelA.className = 'cursor-pointer border-2 border-purple-600 bg-purple-50/30 rounded-2xl p-4 flex items-start gap-3 transition';
+          trackLabelB.className = 'cursor-pointer border-2 border-gray-200 rounded-2xl p-4 flex items-start gap-3 transition hover:border-gray-300';
+        } else {
+          trackLabelB.className = 'cursor-pointer border-2 border-purple-600 bg-purple-50/30 rounded-2xl p-4 flex items-start gap-3 transition';
+          trackLabelA.className = 'cursor-pointer border-2 border-gray-200 rounded-2xl p-4 flex items-start gap-3 transition hover:border-gray-300';
+        }
+      }
+
+      trackRadios.forEach(r => r.addEventListener('change', syncTrackStyles));
+
+      if (luckyBtn) {
+        luckyBtn.addEventListener('click', () => {
+          const tracks = Array.from(trackRadios);
+          const randomIndex = Math.floor(Math.random() * tracks.length);
+          tracks[randomIndex].checked = true;
+          syncTrackStyles();
+
+          luckyBtn.classList.add('bg-purple-100', 'scale-110');
+          luckyBtn.innerHTML = `<span>✨</span> Lucky Pick: ${randomIndex === 0 ? 'Track A' : 'Track B'}!`;
+          setTimeout(() => {
+            luckyBtn.innerHTML = `<span>🎲</span> I'm Feeling Lucky`;
+            luckyBtn.classList.remove('bg-purple-100', 'scale-110');
+          }, 1800);
+        });
+      }
+
+      /* ----------------------------------------------------
+         5. FORM SUBMISSION & SUCCESS FLOW
+      ---------------------------------------------------- */
+      const rsvpSuccessCard = document.getElementById('rsvpSuccessCard');
+      const walletAttendeeName = document.getElementById('walletAttendeeName');
+      const walletStudentId = document.getElementById('walletStudentId');
+      const walletTicketCode = document.getElementById('walletTicketCode');
+      const walletPassTier = document.getElementById('walletPassTier');
+      const walletVipBanner = document.getElementById('walletVipBanner');
+
+      const gmailName = document.getElementById('gmailName');
+      const gmailRecipientEmail = document.getElementById('gmailRecipientEmail');
+      const gmailSubjectLine = document.getElementById('gmailSubjectLine');
+
+      let generatedPassId = '';
+      let generatedAttendee = '';
+      let generatedRoll = '';
+      let generatedDept = '';
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (!validateStep(4)) return;
+
+        if (registeredCount < TOTAL_CAPACITY) {
+          registeredCount++;
+          updateSeatsUI();
+        }
+
+        const nameVal = fields.fullName.value.trim();
+        const idVal = fields.studentId.value.trim().toUpperCase();
+        const emailVal = fields.email.value.trim();
+        const deptVal = fields.department.value;
+        const randomCode = Math.floor(1000 + Math.random() * 9000);
+        const passId = selectedTier === 'vip' ? `GAI-VIP-${randomCode}` : `GAI-SOF-${randomCode}`;
+
+        generatedPassId = passId;
+        generatedAttendee = nameVal;
+        generatedRoll = idVal;
+        generatedDept = deptVal;
+
+        walletAttendeeName.textContent = nameVal;
+        walletStudentId.textContent = `${idVal} • ${deptVal}`;
+        walletTicketCode.textContent = passId;
+
+        if (selectedTier === 'vip') {
+          walletPassTier.textContent = 'VIP PASS & LUNCH';
+          walletPassTier.className = 'text-[10px] font-extrabold uppercase px-2.5 py-0.5 rounded-full bg-amber-400/20 text-amber-300 border border-amber-400/30';
+          walletVipBanner.classList.remove('hidden');
+        } else {
+          walletPassTier.textContent = 'STANDARD PASS';
+          walletPassTier.className = 'text-[10px] font-extrabold uppercase px-2.5 py-0.5 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30';
+          walletVipBanner.classList.add('hidden');
+        }
+
+        gmailName.textContent = nameVal;
+        gmailRecipientEmail.textContent = emailVal;
+        gmailSubjectLine.textContent = `Confirmed: Google AI Masterclass Admission Pass [${passId}] ✅`;
+
+        form.classList.add('hidden');
+        formStepper.classList.add('hidden');
+        rsvpSuccessCard.classList.remove('hidden');
+        document.getElementById('register').scrollIntoView({ behavior: 'smooth' });
+      });
+
+      document.getElementById('registerAnotherBtn')?.addEventListener('click', () => {
+        form.reset();
+        currentStep = 1;
+        selectedTier = 'free';
+        tierCardStandard.classList.add('border-purple-500', 'bg-purple-50/20');
+        tierCardVip.classList.remove('border-amber-500', 'bg-amber-50/20');
+        paymentSection.classList.add('hidden');
+        syncTrackStyles();
+        updateStepperUI();
+        rsvpSuccessCard.classList.add('hidden');
+        formStepper.classList.remove('hidden');
+        form.classList.remove('hidden');
+        document.getElementById('register').scrollIntoView({ behavior: 'smooth' });
+      });
+
+      /* ----------------------------------------------------
+         6. CANVAS DOWNLOAD: GOOGLE WALLET PASS AS IMAGE (.PNG)
+      ---------------------------------------------------- */
+      const downloadPassImageBtn = document.getElementById('downloadPassImageBtn');
+      if (downloadPassImageBtn) {
+        downloadPassImageBtn.addEventListener('click', () => {
+          const canvas = document.createElement('canvas');
+          canvas.width = 800;
+          canvas.height = 480;
+          const ctx = canvas.getContext('2d');
+
+          const grad = ctx.createLinearGradient(0, 0, 800, 480);
+          grad.addColorStop(0, '#0a0d14');
+          grad.addColorStop(0.5, '#121724');
+          grad.addColorStop(1, '#1e2436');
+          ctx.fillStyle = grad;
+          ctx.fillRect(0, 0, 800, 480);
+
+          const radial = ctx.createRadialGradient(720, 420, 10, 720, 420, 260);
+          radial.addColorStop(0, 'rgba(147, 51, 234, 0.45)');
+          radial.addColorStop(1, 'rgba(0, 0, 0, 0)');
+          ctx.fillStyle = radial;
+          ctx.fillRect(0, 0, 800, 480);
+
+          ctx.fillStyle = 'rgba(255, 255, 255, 0.08)';
+          ctx.fillRect(40, 30, 720, 60);
+
+          ctx.fillStyle = '#ffffff';
+          ctx.font = 'bold 24px "Plus Jakarta Sans", sans-serif';
+          ctx.fillText('Google AI Masterclass', 60, 68);
+
+          ctx.fillStyle = selectedTier === 'vip' ? '#f59e0b' : '#a855f7';
+          ctx.font = 'bold 14px "JetBrains Mono", monospace';
+          ctx.fillText(selectedTier === 'vip' ? 'VIP PASS + LUNCH' : 'STANDARD SCHOLAR PASS', 520, 67);
+
+          ctx.fillStyle = '#9ca3af';
+          ctx.font = '12px "JetBrains Mono", monospace';
+          ctx.fillText('OFFICIAL ATTENDEE CREDENTIAL', 60, 140);
+
+          ctx.fillStyle = '#ffffff';
+          ctx.font = 'bold 36px "Plus Jakarta Sans", sans-serif';
+          ctx.fillText(generatedAttendee || 'Attendee Name', 60, 185);
+
+          ctx.fillStyle = '#cbd5e1';
+          ctx.font = '16px "JetBrains Mono", monospace';
+          ctx.fillText(`${generatedRoll} • ${generatedDept}`, 60, 220);
+
+          ctx.fillStyle = '#9ca3af';
+          ctx.font = '12px "JetBrains Mono", monospace';
+          ctx.fillText('ACADEMIC HOST & VENUE', 60, 280);
+
+          ctx.fillStyle = '#ffffff';
+          ctx.font = 'bold 18px "Plus Jakarta Sans", sans-serif';
+          ctx.fillText('School of the Future, Techno India University', 60, 310);
+
+          ctx.fillStyle = '#94a3b8';
+          ctx.font = '15px sans-serif';
+          ctx.fillText('Audi-1 • Saturday, Oct 17, 2026 • 10:00 AM IST', 60, 335);
+
+          ctx.fillStyle = '#1e1b4b';
+          ctx.fillRect(60, 375, 300, 50);
+          ctx.strokeStyle = '#6366f1';
+          ctx.lineWidth = 1;
+          ctx.strokeRect(60, 375, 300, 50);
+
+          ctx.fillStyle = '#c7d2fe';
+          ctx.font = 'bold 18px "JetBrains Mono", monospace';
+          ctx.fillText(generatedPassId || 'GAI-TIU-2026', 80, 407);
+
+          ctx.fillStyle = '#ffffff';
+          ctx.fillRect(600, 270, 140, 140);
+          ctx.fillStyle = '#111827';
+          ctx.font = 'bold 12px "JetBrains Mono", monospace';
+          ctx.fillText('SCAN AT AUDI', 625, 430);
+
+          ctx.fillStyle = '#111827';
+          ctx.fillRect(615, 285, 35, 35);
+          ctx.fillStyle = '#ffffff';
+          ctx.fillRect(622, 292, 21, 21);
+          ctx.fillStyle = '#111827';
+          ctx.fillRect(627, 297, 11, 11);
+
+          ctx.fillStyle = '#111827';
+          ctx.fillRect(690, 285, 35, 35);
+          ctx.fillStyle = '#ffffff';
+          ctx.fillRect(697, 292, 21, 21);
+          ctx.fillStyle = '#111827';
+          ctx.fillRect(702, 297, 11, 11);
+
+          ctx.fillStyle = '#111827';
+          ctx.fillRect(615, 360, 35, 35);
+          ctx.fillStyle = '#ffffff';
+          ctx.fillRect(622, 367, 21, 21);
+          ctx.fillStyle = '#111827';
+          ctx.fillRect(627, 372, 11, 11);
+
+          const imageURL = canvas.toDataURL('image/png');
+          const downloadLink = document.createElement('a');
+          downloadLink.href = imageURL;
+          downloadLink.download = `Google_AI_Pass_${generatedPassId || 'Masterclass'}.png`;
+          document.body.appendChild(downloadLink);
+          downloadLink.click();
+          document.body.removeChild(downloadLink);
+        });
+      }
+
+      /* ----------------------------------------------------
+         7. PRINT MODAL
+      ---------------------------------------------------- */
+      const printModal = document.getElementById('printModal');
+      const viewPrintModalBtn = document.getElementById('viewPrintModalBtn');
+      const closePrintModal = document.getElementById('closePrintModal');
+      const donePrintModal = document.getElementById('donePrintModal');
+      const triggerPrintBtn = document.getElementById('triggerPrintBtn');
+
+      if (viewPrintModalBtn) {
+        viewPrintModalBtn.addEventListener('click', () => {
+          document.getElementById('printModalName').textContent = generatedAttendee;
+          document.getElementById('printModalRoll').textContent = generatedRoll;
+          document.getElementById('printModalDept').textContent = generatedDept;
+          document.getElementById('printModalId').textContent = generatedPassId;
+          printModal.classList.remove('hidden');
+        });
+      }
+
+      const closePrint = () => printModal.classList.add('hidden');
+      closePrintModal?.addEventListener('click', closePrint);
+      donePrintModal?.addEventListener('click', closePrint);
+      triggerPrintBtn?.addEventListener('click', () => window.print());
+
+      /* ----------------------------------------------------
+         8. "ASK GEMINI" CHATBOT WIDGET
+      ---------------------------------------------------- */
+      const chatToggleBtn = document.getElementById('chatToggleBtn');
+      const chatPanel = document.getElementById('chatPanel');
+      const closeChatBtn = document.getElementById('closeChatBtn');
+      const chatForm = document.getElementById('chatForm');
+      const chatInput = document.getElementById('chatInput');
+      const chatMessages = document.getElementById('chatMessages');
+
+      chatToggleBtn.addEventListener('click', () => {
+        chatPanel.classList.toggle('hidden');
+      });
+
+      closeChatBtn.addEventListener('click', () => {
+        chatPanel.classList.add('hidden');
+      });
+
+      const cannedKnowledge = {
+        free: "The event is 100% free for students through the Standard Scholar Pass! If you'd like executive networking lunch with Google researchers, you can optionally pick the ₹499 VIP pass.",
+        bring: "Please bring your university ID card and a Wi-Fi-ready laptop with Google Chrome. You will be writing live code using Gemini APIs and Google AI Studio during the hands-on sprint.",
+        vip: "The VIP Pass (₹499) gives you a catered executive multi-course lunch, 1-on-1 interaction with Google AI researchers, guaranteed front-row auditorium seating, and a swag pack.",
+        venue: "The masterclass will be held in Audi-1, School of the Future Building, Techno India University campus in Salt Lake Sector V, Kolkata.",
+        time: "The session starts on Saturday, October 17, 2026 from 10:00 AM to 4:30 PM IST. Check-in opens at 09:15 AM.",
+        cert: "Yes! Every participant who completes the afternoon coding challenge receives an official digital completion certificate co-issued by Google and School of the Future, TIU."
+      };
+
+      function appendMessage(sender, text) {
+        const row = document.createElement('div');
+        row.className = sender === 'user' ? 'flex justify-end' : 'flex items-start gap-2';
+
+        if (sender === 'user') {
+          row.innerHTML = `
+            <div class="gemini-gradient-bg text-white p-3 rounded-2xl rounded-tr-sm shadow-xs max-w-[85%] text-xs leading-relaxed">
+              ${text}
+            </div>
+          `;
+        } else {
+          row.innerHTML = `
+            <div class="w-6 h-6 rounded-lg bg-purple-600 text-white flex items-center justify-center text-[10px] font-bold shrink-0 mt-0.5">
+              ✦
+            </div>
+            <div class="bg-white p-3 rounded-2xl rounded-tl-sm border border-gray-100 shadow-xs max-w-[85%] text-gray-800 leading-relaxed">
+              ${text}
+            </div>
+          `;
+        }
+
+        chatMessages.appendChild(row);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }
+
+      function handleQuery(query) {
+        appendMessage('user', query);
+        const lower = query.toLowerCase();
+
+        let reply = "I can help with questions regarding passes, schedules, venue in TIU, or requirements. Feel free to try the quick suggestion chips above!";
+
+        if (lower.includes('free') || lower.includes('cost') || lower.includes('price')) {
+          reply = cannedKnowledge.free;
+        } else if (lower.includes('bring') || lower.includes('laptop') || lower.includes('requirement')) {
+          reply = cannedKnowledge.bring;
+        } else if (lower.includes('vip') || lower.includes('lunch') || lower.includes('perk')) {
+          reply = cannedKnowledge.vip;
+        } else if (lower.includes('where') || lower.includes('venue') || lower.includes('location')) {
+          reply = cannedKnowledge.venue;
+        } else if (lower.includes('time') || lower.includes('when') || lower.includes('date') || lower.includes('schedule')) {
+          reply = cannedKnowledge.time;
+        } else if (lower.includes('cert') || lower.includes('degree')) {
+          reply = cannedKnowledge.cert;
+        }
+
+        setTimeout(() => appendMessage('bot', reply), 350);
+      }
+
+      chatForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const text = chatInput.value.trim();
+        if (!text) return;
+        chatInput.value = '';
+        handleQuery(text);
+      });
+
+      document.querySelectorAll('.faq-chip').forEach(chip => {
+        chip.addEventListener('click', () => {
+          handleQuery(chip.getAttribute('data-q'));
+        });
+      });
+
+    });
+  </script>
+</body>
+</html>
